@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatur Chess - A New Chess Variant</title>
+    <meta name="description" content="Play Chatur Chess - a unique chess variant with the new Chatur piece that moves diagonally like an inverse pawn.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>♔ Chatur Chess ♚</h1>
+            <p class="subtitle">A New Chess Variant with the Chatur Piece</p>
+        </header>
+
+        <div class="game-info">
+            <div class="player-panel player-black">
+                <div class="player-indicator"></div>
+                <span class="player-label">Black</span>
+                <div class="captured-pieces" id="captured-white"></div>
+            </div>
+            <div class="turn-indicator" id="turn-indicator">
+                <span class="turn-text">White's Turn</span>
+            </div>
+            <div class="player-panel player-white">
+                <div class="player-indicator"></div>
+                <span class="player-label">White</span>
+                <div class="captured-pieces" id="captured-black"></div>
+            </div>
+        </div>
+
+        <div class="board-wrapper">
+            <div class="board-container">
+                <div class="rank-labels">
+                    <span>8</span><span>7</span><span>6</span><span>5</span>
+                    <span>4</span><span>3</span><span>2</span><span>1</span>
+                </div>
+                <div id="chess-board" class="chess-board"></div>
+                <div class="file-labels">
+                    <span>a</span><span>b</span><span>c</span><span>d</span>
+                    <span>e</span><span>f</span><span>g</span><span>h</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-controls">
+            <button id="new-game" class="btn btn-primary">
+                <span class="btn-icon">↻</span> New Game
+            </button>
+            <button id="show-rules" class="btn btn-secondary">
+                <span class="btn-icon">📖</span> Rules
+            </button>
+        </div>
+
+        <div class="game-status" id="game-status"></div>
+    </div>
+
+    <!-- Rules Modal -->
+    <div class="modal-overlay" id="rules-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>📖 Game Rules</h2>
+                <button class="modal-close" id="close-rules">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>🆕 The Chatur Piece</h3>
+                <div class="piece-demo">
+                    <span class="chatur-symbol white">⛃</span>
+                    <span class="chatur-symbol black">⛂</span>
+                </div>
+                <ul class="rules-list">
+                    <li><strong>Movement:</strong> Moves <em>diagonally forward</em> - one square at a time, or two squares on its first move.</li>
+                    <li><strong>Capture:</strong> Captures <em>straight forward</em> - the opposite of a regular pawn!</li>
+                    <li><strong>Position:</strong> Alternates with pawns on the starting row (Pawn, Chatur, Pawn, Chatur...)</li>
+                    <li><strong>Promotion:</strong> Like pawns, Chaturs can be promoted when reaching the opposite end.</li>
+                </ul>
+                
+                <h3>♟️ Standard Chess Rules Apply</h3>
+                <p>All other pieces move according to standard chess rules. The goal remains to checkmate the opponent's king!</p>
+                
+                <h3>🎯 Board Setup</h3>
+                <p>Columns a, c, e, g have Pawns. Columns b, d, f, h have Chaturs.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promotion Modal -->
+    <div class="modal-overlay" id="promotion-modal">
+        <div class="modal promotion-modal">
+            <div class="modal-header">
+                <h2>👑 Promote Your Piece!</h2>
+            </div>
+            <div class="modal-body">
+                <p>Choose a piece to promote to:</p>
+                <div class="promotion-options" id="promotion-options"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
